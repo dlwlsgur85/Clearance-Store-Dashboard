@@ -30,27 +30,38 @@ uploaded_file = st.sidebar.file_uploader(
 # 샘플 데이터 생성 함수
 @st.cache_data
 def load_sample_data():
+    # 100개 상품 데이터 생성
+    n_products = 100
+    
+    # 기본 패턴 생성
+    stores = ['나이키일산', '브이엠플라스연수', '모다아울렛대전']
+    biz_types = ['AP', 'FW', 'EQ']
+    silhouettes = ['로우탑', '러닝', '클래식', '하이탑', '캐주얼']
+    categories = ['신발', '운동화', '라이프스타일', '농구화', '캐주얼']
+    genders = ['UNISEX', 'MEN', 'WOMEN']
+    sizes = ['240', '250', '260', '270', '280']
+    
     data = {
-        '매장명': ['나이키일산', '브이엠플라스연수', '모다아울렛대전', '나이키일산', '브이엠플라스연수'] * 20,
-        'Biz': ['AP', 'FW', 'EQ', 'AP', 'FW'] * 20,
-        '상품코드': [f'PRD{str(i).zfill(3)}' for i in range(1, 101)],
-        '상품명': [f'상품명_{i}' for i in range(1, 101)],
-        '실루엣': ['로우탑', '러닝', '클래식', '하이탑', '캐주얼'] * 20,
-        'CATE': ['신발', '운동화', '라이프스타일', '농구화', '캐주얼'] * 20,
-        'GENDER': ['UNISEX', 'MEN', 'WOMEN'] * 34,
-        '사이즈': np.random.choice(['240', '250', '260', '270', '280'], 100),
-        '소비자': np.random.randint(50000, 300000, 100),
-        '지정할인율': np.random.randint(10, 50, 100),
-        '지정할인가': np.random.randint(40000, 200000, 100),
-        '순매출할인율': np.random.randint(15, 60, 100),
-        '순매출할인가': np.random.randint(35000, 180000, 100),
-        '월간누적판매량': np.random.randint(5, 100, 100),
-        '일별판매량': np.random.randint(1, 10, 100),
-        '최근3일판매량': np.random.randint(3, 30, 100),
-        '최근7일판매량': np.random.randint(10, 70, 100),
-        '최근14일판매량': np.random.randint(20, 140, 100),
-        '최근21일판매량': np.random.randint(30, 210, 100),
-        '최근입고일자': pd.date_range('2023-01-01', periods=100, freq='D').strftime('%Y-%m-%d')
+        '매장명': [stores[i % len(stores)] for i in range(n_products)],
+        'Biz': [biz_types[i % len(biz_types)] for i in range(n_products)],
+        '상품코드': [f'PRD{str(i+1).zfill(3)}' for i in range(n_products)],
+        '상품명': [f'상품명_{i+1}' for i in range(n_products)],
+        '실루엣': [silhouettes[i % len(silhouettes)] for i in range(n_products)],
+        'CATE': [categories[i % len(categories)] for i in range(n_products)],
+        'GENDER': [genders[i % len(genders)] for i in range(n_products)],
+        '사이즈': [sizes[i % len(sizes)] for i in range(n_products)],
+        '소비자': np.random.randint(50000, 300000, n_products),
+        '지정할인율': np.random.randint(10, 50, n_products),
+        '지정할인가': np.random.randint(40000, 200000, n_products),
+        '순매출할인율': np.random.randint(15, 60, n_products),
+        '순매출할인가': np.random.randint(35000, 180000, n_products),
+        '월간누적판매량': np.random.randint(5, 100, n_products),
+        '일별판매량': np.random.randint(1, 10, n_products),
+        '최근3일판매량': np.random.randint(3, 30, n_products),
+        '최근7일판매량': np.random.randint(10, 70, n_products),
+        '최근14일판매량': np.random.randint(20, 140, n_products),
+        '최근21일판매량': np.random.randint(30, 210, n_products),
+        '최근입고일자': pd.date_range('2023-01-01', periods=n_products, freq='D').strftime('%Y-%m-%d')
     }
     return pd.DataFrame(data)
 
