@@ -1,10 +1,18 @@
+### 4. `.streamlit/config.toml` - Streamlit 설정
+
+```toml
 [theme]
-primaryColor = "#667eea"
+primaryColor = "#3498db"
 backgroundColor = "#ffffff"
-secondaryBackgroundColor = "#f0f2f6"
-textColor = "#262730"
+secondaryBackgroundColor = "#f8f9fa"
+textColor = "#2c3e50"
+font = "sans serif"
 
 [server]
-maxUploadSize = 200
-enableXsrfProtection = false
+headless = true
+port = 8501
 enableCORS = false
+enableXsrfProtection = false
+
+[browser]
+gatherUsageStats = false
