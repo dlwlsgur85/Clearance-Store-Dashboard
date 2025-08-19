@@ -1,9 +1,11 @@
-### 4. `.streamlit/config.toml` - Streamlit 설정
+---
+
+## 📁 4. .streamlit/config.toml - 시스템 설정
 
 ```toml
 [theme]
 primaryColor = "#2E86AB"
-backgroundColor = "#ffffff" 
+backgroundColor = "#ffffff"
 secondaryBackgroundColor = "#f8f9fa"
 textColor = "#2c3e50"
 font = "sans serif"
@@ -14,7 +16,20 @@ port = 8501
 enableCORS = false
 enableXsrfProtection = false
 maxUploadSize = 200
+runOnSave = true
+allowRunOnSave = true
 
 [browser]
 gatherUsageStats = false
 serverAddress = "0.0.0.0"
+serverPort = 8501
+
+[global]
+developmentMode = false
+logLevel = "info"
+unitTest = false
+
+[client]
+caching = true
+displayEnabled = true
+showErrorDetails = true
